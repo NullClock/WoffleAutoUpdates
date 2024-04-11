@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+::-webkit-scrollbar {
+	display: none
+}
+body{
+	margin:0;
+	width:100vw;
+	height:100vh;
+	overflow:hidden;
+	font-family:quicksand,sans-serif;
+	background-color:#102;
+	color:#fff;
+}
+#topchrome.blur:not(:hover){
+	filter:blur(.5rem)
+}
+*{
+	transition-duration:.1s;
+	box-sizing:border-box
+}
+:hover,:focus{
+	outline:none;
+	transition-duration:.1s
+}
+@font-face {
+	font-family: 'quicksand';
+	src: url('offline/fonts/quicksand.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal
+}
+#topchrome{
+	position:relative;
+	top:0;
+	width:100%;
+	height:2rem;
+	/*backdrop-filter:blur(10vw);*/
+	/*background:#204;*/
+	display:flex;
+	/*background-image:linear-gradient(#204a,#2044);*/
+	z-index:100;
+	overflow:hidden;
+	color:inherit;
+	transition:color 0;
+}
+#topchrome.rgb{
+	background:linear-gradient(transparent 8%,#000 8%,#000 92%,transparent 92%),conic-gradient(from var(--rotation),red,yellow,lime,aqua,blue,magenta,red);
+}
+#topchrome.black{
+	background:#000;
+}
+#topchrome.white{
+	background:#aaa;
+	color:#000;
+}
+#topchrome.fullscreen:not(.focus){
+	top:-1.8rem;
+}
+#topchrome>*{
+	height:100%;
+	width:2rem;
+	bottom:0;
+	display:inline-block;
+	vertical-align:bottom;
+	flex:none
+}
+.button.cross{
+	background:none;
+	background-image:linear-gradient(45deg,transparent 48%,#fff 48%,#fff 52%,transparent 52%),linear-gradient(315deg,transparent 48%,#fff 48%,#fff 52%,transparent 52%);
+	background-clip:content-box
+}
+.button.chevron{
+	padding:.3rem 1rem .3rem .3rem
+}
+#nav-back{
+	margin-left:-.7rem;
+	margin-right:-.3rem;
+	background-position:right;
+	transform:rotate(180deg)
+}
+#nav-submit{
+	margin-left:-1.2rem;
+	margin-right:-1rem;
+}
+#omnibox{
+	width:calc(50vw - 3.75rem);
+	padding:0 .25rem;
+	font-size:1.6rem;
+	background:none;
+	border:none;
+	color:inherit;
+	font-family:quicksand;
+	font-variation-settings: 'wght' 500;
+	overflow:hidden;
+}
+#omnibox::placeholder{
+	color:inherit;
+	opacity:.6;
+}
+#omnibox::selection{
+	background-color:#fff;
+	color:#204
+}
+#tab-container{
+	width:calc(50vw - 8rem);
+	height:2rem;
+	margin-right:.1rem;
+	margin-left:auto;
+	overflow-y:hidden;
+	overflow-x:scroll;
+	white-space:nowrap;
+	text-align:right;
+	direction:rtl;
+	transform:scale(1,-1);
+	display:inline-flex;
+	align-self:flex-end
+}
+.tab{
+	transform:scale(1,-1);
+	flex:1 0 0;
+	max-width:10rem;
+	min-width:3rem;
+	margin:0 .0875rem;
+	display:inline-block;
+	border-width:.2rem;
+	border-radius:.5rem .5rem 0 0;
+	animation:tabOpen .1s;
+	text-align:left;
+	direction:ltr;
+	font-size:1.25rem;
+	color:#435;
+	font-variation-settings: 'wght' 550;
+	background-color:#fff8
+}
+.tab::before{
+	display:inline-block;
+	margin:.2rem .4rem;
+	width:calc(100% - 2rem);
+	height:3rem;
+	content:attr(data-domain);
+	overflow:scroll
+}
+.tab::after{
+	display:inline-block;
+	width:1rem;
+	height:1rem;
+	margin:.5rem .2rem;
+	margin-left:-1rem;
+	float:right;
+	background:none;
+	content:'';
+	background:linear-gradient(45deg,transparent 46%,#435 46%,#435 54%,transparent 54%),linear-gradient(315deg,transparent 46%,#435 46%,#435 54%,transparent 54%) 1rem;
+	border-radius:.5rem;
+	cursor:pointer
+}
+.tab.close{
+	animation:tabClose .1s forwards
+}
+.tab:hover{
+	background-color:#fffa
+}
+.current.tab{
+	background-color:#fff
+}
+@keyframes tabOpen{
+	0%{
+		margin-left:-1.5rem;
+		opacity:0
+  }
+	100%{
+		margin-left:.0875rem;
+		opacity:.5
+  }
+}
+@keyframes tabClose{
+	0%{
+		margin-left:.0875rem;
+		opacity:1
+  }
+	100%{
+		margin-left:-1.5rem;
+		opacity:0
+  }
+}
+.button{
+	padding:.3rem;
+	background-color:none;
+	border:none;
+	background-clip:content-box;
+	cursor:pointer
+}
+.button:hover{
+	opacity:.6
+}
+.hov-expand:hover{
+	background-clip:border-box
+}
+#tab-new{
+	background-image:linear-gradient(#fff0 48%,#fff 48%,#fff 52%,#fff0 52%),linear-gradient(90deg,#fff0 48%,#fff 48%,#fff 52%,#fff0 52%)
+}
+#mini{
+	background-image:linear-gradient(#fff0 48%,#fff 48%,#fff 52%,#fff0 52%)
+}
+#max{
+	background-image:radial-gradient(#fff0 38%,#fff 42%,#fff 46%,#fff0 50%)
+}
+#max:hover{
+	background-image:radial-gradient(#fff0 54%,#fff 58%,#fff 62%,#fff0 66%)
+}
+#webview-container{
+	position:absolute;
+	top:2rem;
+	height:calc(100vh - 2rem);
+	background-size:50%;
+	background-repeat:no-repeat;
+	background-position:50%;
+	width:100%;
+	z-index:0
+}
+#webview-container.fullscreen{
+	height:100vh;
+}
+#webview-container.fullscreen.focus{
+	top:0;
+}
+webview{
+	width:100%;
+	height:100%;
+	display:none
+}
+.current-webview{
+	display:block;
+}
+#snackbar{
+	position:absolute;
+	width:100vw;
+	height:2rem;
+	top:0;
+	font-size:1.5rem;
+	text-align:center;
+	cursor:pointer;
+	background-color:#fff;
+	color:#204;
+	overflow:hidden;
+	opacity:0;
+	pointer-events:none;
+}
+#snackbar:focus{
+  opacity:1;
+  animation:4.5s fadeOut ease-in;
+	pointer-events:auto
+}
+@keyframes fadeOut{
+  0%{opacity:1}
+  100%{opacity:0}
+}
+#discord-wrapper{
+	position:fixed;
+	background:#2a2d32;
+	border-top-left-radius:1vh;
+	box-shadow:0 0 1rem #213;
+	right:0;
+	bottom:0;
+	width:30.5rem;
+	height:50vh;
+	overflow:hidden;
+	display:none
+}
+#discord{
+	background:#2a2d32;
+	position:absolute;
+	right:0;
+	bottom:0;
+	width:50rem;
+	height:50vh;
+	display:block
+}
+#discord.menu{
+	right:-19.5rem
+}
+#discord.login{
+	right:-10rem
+}
+#discord-shadow.login{
+	display:none
+}
+#discord-shadow{
+	position:absolute;
+	width:1rem;
+	height:50vh;
+	background-image:linear-gradient(90deg,#4358,transparent);
+	cursor:pointer
+}
+#discord-shadow.menu{
+	width:30.5rem;
+	bottom:0;
+	right:-19.5rem;
+	background:#000a
+}
+#draggable{
+	position:fixed;
+	width:100vw;
+	height:.3rem;
+	top:0;
+	-webkit-app-region:drag
+}
+#draggable.fullscreen{
+	display:none
+}
+#lightbar{
+	position:fixed;
+	top:0;
+	width:100vw;
+	height:.2rem;
+	pointer-events:none
+}
+#lightbar.loaded{
+	opacity:0;
+	background:#98a;
+	animation:1s loadedBar 1;
+}
+@keyframes loadedBar{
+	0%{
+		opacity:0
+  }
+	10%{
+		opacity:1
+  }
+	100%{
+		opacity:0
+  }
+}
+#lightbar.load{
+	background-image:linear-gradient(90deg,#fff0,#fff,#fff0);
+	animation:1s loadBar infinite ease;
+}
+#lightbar.load::after{
+  position:fixed;
+  content:'';
+  left:0;
+  width:100vw;
+  height:.2rem;
+	cursor:wait;
+}
+@keyframes loadBar{
+	0%{
+		left:-50vw;
+		width:50vw
+  }
+	100%{
+		left:100vw;
+		width:50vw
+  }
+}
+#blurme{
+  position:fixed;
+  width:100vw;
+  height:100vh;
+  top:0;
+  left:0;
+  background:#204;
+  display:block;
+  pointer-events:none;
+}
+    </style>
+  </head>
+  <body>
+    <webview id='blurme'></webview>
+    <div id='topchrome' class='focus'>
+      <div id='draggable'></div>
+      <div class='button cross chevron' id='nav-back'></div>
+      <div class='button cross chevron' id='nav-forward'></div>
+      <div class='button cross chevron' id='nav-submit' data-title='go' value=''></div>
+      <input id='omnibox' placeholder='Search DuckDuckGo or type in a URL' spellcheck='false'>
+      <div id='tab-container'></div>
+      <div class='button hov-expand' id='tab-new'></div>
+      <div class='button hov-expand' id='mini'></div>
+      <div class='button hov-expand' id='max'></div>
+      <div class='button hov-expand cross' id='close'></div>
+      <div id='lightbar' class='loaded'></div>
+      <div id='snackbar' tabindex='99'></div>
+    </div>
+    <div id='webview-container'></div>
+    <div id='discord-wrapper'>
+      <webview id='discord' src='https://discordapp.com/login'></webview>
+      <div id='discord-shadow' title='>>'></div>
+    </div>
+    <script src='browser.js'></script>
+  </body>
+</html>
