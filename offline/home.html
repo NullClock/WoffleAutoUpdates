@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      html,body{
+        width:100%;
+        height:100%;
+        margin:0;
+        font-family:quicksand,sans-serif;
+        background:#204;
+        animation:fadeIn .3s forwards;
+        overflow:scroll;
+      }
+      *,:hover,:focus{
+        transition-duration:.1s;
+        outline:none;
+      }
+      @keyframes fadeIn{
+        0%{opacity:0;background:#2040}
+        50%{background:#204}
+        100%{opacity:1}
+      }
+      @font-face {
+      	font-family: 'quicksand';
+      	src: url('fonts/quicksand.woff2') format('woff2');
+      	font-weight: 400;
+      	font-style: normal
+      }
+      *{
+        transition-duration:.1s;
+        box-sizing:border-box;
+      }
+      #link-container{
+        width:100%;
+        display:flex;
+        flex-wrap:wrap;
+        align-items:stretch;
+        justify-content:center;
+      }
+      #link-container>*{
+        position:relative;
+        border-radius:1rem;
+        margin:1rem;
+        width:27vw;
+        min-width:15rem;
+        height:21vw;
+        min-height:15rem;
+        opacity:.9;
+        background-image:linear-gradient(#80f8,#0000);
+        color:#fff;
+        font-size:2rem;
+        text-align:center;
+      }
+      #link-container>*>*{
+        position:absolute;
+        width:100%;
+        text-align:center;
+        bottom:1rem;
+      }
+      #link-container>:hover{
+        opacity:1;
+        cursor:pointer;
+        background-image:linear-gradient(#80f,#0000);
+      }
+      .link-logo{
+        height:100%;
+        left:0;
+        display:inline-block;
+        fill:#fff
+      }
+      #help-pop{
+        width:calc(100vw - 10rem);
+        top:0;
+        min-height:5rem;
+        margin:2rem 5rem 0rem;
+        background:#204;
+        border-radius:2.5rem;
+        box-shadow:inset 0 0 1.5rem #80f;
+        color:#80f;
+        padding:.5rem 2rem;
+        font-size:1.5rem;
+        line-height:2.5rem;
+      }
+      summary{
+        display:block;
+        width:inherit;
+        height:5rem;
+        padding:1.5rem;
+        margin:-.5rem -2rem -2rem;
+        text-align:center;
+        line-height:1;
+        user-select:none;
+        cursor:pointer;
+        border-radius:inherit;
+      }
+      #help-pop:hover{
+        box-shadow:inset 0 0 2rem #80f;
+      }
+      .key{
+        box-shadow:inset 0 0 .3rem #80f;
+        border-radius:.5rem;
+        padding:.2rem .5rem;
+      }
+      .key:hover{
+        box-shadow:inset 0 0 .5rem #80f;
+      }
+    </style>
+  </head>
+  <body>
+    <details class='' id='help-pop' tabindex='0'>
+      <summary>keyboard shortcuts</summary>
+      <p>Hover on the top bar to execute Woffle&apos;s keyboard shortcuts.</p>
+        <ul>
+          <li><span class='key'>Alt</span> + <span class='key'>W</span> to close current tab</li>
+          <li><span class='key'>Ctrl</span> + <span class='key'>Alt</span> + <span class='key'>W</span> to erase this window&apos;s history</li>
+          <li><span class='key'>Alt</span> + <span class='key'>T</span> to open new tab</li>
+          <li><span class='key'>Alt</span> + <span class='key'>N</span> to open new window</li>
+          <li><span class='key'>Alt</span> + <span class='key'>E</span> to view all Woffle tabs</li>
+          <li><span class='key'>Alt</span> + <span class='key'>D</span> to toggle Discord</li>
+          <li><span class='key'>Alt</span> + <span class='key'>/</span> to toggle on/off fog mode (blurs screen if inactive for more than 15 seconds or is in alt+tab switcher)</li>
+          <li><span class='key'>Alt</span> + <span class='key'>i</span> to toggle between themes</li>
+          <li><span class='key'>Alt</span> + <span class='key'>-</span> to minimize</li>
+          <li><span class='key'>Alt</span> + <span class='key'>+</span> to resize</li>
+          <li><span class='key'>Alt</span> + <span class='key'>[</span> to multitask left</li>
+          <li><span class='key'>Alt</span> + <span class='key'>]</span> to multitask right</li>
+          <li><span class='key'>Alt</span> + <span class='key'>Esc</span> to make top bar sticky/not sticky</li>
+        </ul>
+      <p style='opacity:.5'>
+        Made with &lt;3 from Arcadia High<br>
+        Follow us on Instagram @wofflewoffle<br>
+        Changes in 1.5x:<br>
+        - Added resize button<br>
+        - Added loading bar<br>
+        - Removed glitchy top bar blur for now. Filed bug report. Should be fixed soon.<br>
+        - Added themes.<br>
+      </p>
+    </details>
+    <div id='link-container'>
+      <a href='https://twitter.com'>
+        <svg viewBox='0 0 380 400' class='link-logo'>
+      		<path d="M153.6,301.6c94.3,0,145.9-78.2,145.9-145.9c0-2.2,0-4.4-0.1-6.6c10-7.2,18.7-16.3,25.6-26.6
+      			c-9.2,4.1-19.1,6.8-29.5,8.1c10.6-6.3,18.7-16.4,22.6-28.4c-9.9,5.9-20.9,10.1-32.6,12.4c-9.4-10-22.7-16.2-37.4-16.2
+      			c-28.3,0-51.3,23-51.3,51.3c0,4,0.5,7.9,1.3,11.7c-42.6-2.1-80.4-22.6-105.7-53.6c-4.4,7.6-6.9,16.4-6.9,25.8
+      			c0,17.8,9.1,33.5,22.8,42.7c-8.4-0.3-16.3-2.6-23.2-6.4c0,0.2,0,0.4,0,0.7c0,24.8,17.7,45.6,41.1,50.3c-4.3,1.2-8.8,1.8-13.5,1.8
+      			c-3.3,0-6.5-0.3-9.6-0.9c6.5,20.4,25.5,35.2,47.9,35.6c-17.6,13.8-39.7,22-63.7,22c-4.1,0-8.2-0.2-12.2-0.7
+      			C97.7,293.1,124.7,301.6,153.6,301.6"/>
+        </svg><div>Twitter</div></a>
+      <a href='https://instagram.com'>
+        <svg viewBox='-12 -12 60 60' class='link-logo'>
+          <path d="M18 0c-4.889 0-5.501.02-7.421.108C8.663.196 7.354.5 6.209.945a8.823 8.823 0 0 0-3.188 2.076A8.83 8.83 0 0 0 .945 6.209C.5 7.354.195 8.663.108 10.58.021 12.499 0 13.11 0 18s.02 5.501.108 7.421c.088 1.916.392 3.225.837 4.37a8.823 8.823 0 0 0 2.076 3.188c1 1 2.005 1.616 3.188 2.076 1.145.445 2.454.75 4.37.837 1.92.087 2.532.108 7.421.108s5.501-.02 7.421-.108c1.916-.088 3.225-.392 4.37-.837a8.824 8.824 0 0 0 3.188-2.076c1-1 1.616-2.005 2.076-3.188.445-1.145.75-2.454.837-4.37.087-1.92.108-2.532.108-7.421s-.02-5.501-.108-7.421c-.088-1.916-.392-3.225-.837-4.37a8.824 8.824 0 0 0-2.076-3.188A8.83 8.83 0 0 0 29.791.945C28.646.5 27.337.195 25.42.108 23.501.021 22.89 0 18 0zm0 3.243c4.806 0 5.376.019 7.274.105 1.755.08 2.708.373 3.342.62.84.326 1.44.717 2.07 1.346.63.63 1.02 1.23 1.346 2.07.247.634.54 1.587.62 3.342.086 1.898.105 2.468.105 7.274s-.019 5.376-.105 7.274c-.08 1.755-.373 2.708-.62 3.342a5.576 5.576 0 0 1-1.346 2.07c-.63.63-1.23 1.02-2.07 1.346-.634.247-1.587.54-3.342.62-1.898.086-2.467.105-7.274.105s-5.376-.019-7.274-.105c-1.755-.08-2.708-.373-3.342-.62a5.576 5.576 0 0 1-2.07-1.346 5.577 5.577 0 0 1-1.346-2.07c-.247-.634-.54-1.587-.62-3.342-.086-1.898-.105-2.468-.105-7.274s.019-5.376.105-7.274c.08-1.755.373-2.708.62-3.342.326-.84.717-1.44 1.346-2.07.63-.63 1.23-1.02 2.07-1.346.634-.247 1.587-.54 3.342-.62 1.898-.086 2.468-.105 7.274-.105z"/><path d="M18 24.006a6.006 6.006 0 1 1 0-12.012 6.006 6.006 0 0 1 0 12.012zm0-15.258a9.252 9.252 0 1 0 0 18.504 9.252 9.252 0 0 0 0-18.504zm11.944-.168a2.187 2.187 0 1 1-4.374 0 2.187 2.187 0 0 1 4.374 0"/>
+        </svg><div>Instagram</div></a>
+      <a href='https://www.reddit.com'>
+        <svg viewBox="60 60 208 208" class='link-logo'>
+        	<path d="M217.4,163.1c0-6.6-5.3-11.9-11.9-11.9c-3.2,0-6.1,1.3-8.2,3.3c-8.1-5.9-19.3-9.7-31.8-10.1l5.4-25.5
+        		l17.7,3.8c0.2,4.5,3.9,8.1,8.5,8.1c4.7,0,8.5-3.8,8.5-8.5c0-4.7-3.8-8.5-8.5-8.5c-3.3,0-6.2,1.9-7.6,4.7l-19.8-4.2
+        		c-0.5-0.1-1.1,0-1.6,0.3c-0.5,0.3-0.8,0.8-0.9,1.3l-6,28.4c-12.7,0.4-24,4.1-32.3,10.1c-2.1-2-5-3.3-8.2-3.3
+        		c-6.6,0-11.9,5.3-11.9,11.9c0,4.8,2.9,9,7,10.8c-0.2,1.2-0.3,2.4-0.3,3.6c0,18.3,21.3,33.1,47.6,33.1s47.6-14.8,47.6-33.1
+        		c0-1.2-0.1-2.4-0.3-3.6C214.5,172.1,217.4,168,217.4,163.1z M135.9,171.6c0-4.7,3.8-8.5,8.5-8.5c4.7,0,8.5,3.8,8.5,8.5
+        		c0,4.7-3.8,8.5-8.5,8.5C139.7,180.1,135.9,176.3,135.9,171.6z M183.2,194c-5.8,5.8-16.9,6.2-20.2,6.2c-3.3,0-14.4-0.4-20.2-6.2
+        		c-0.9-0.9-0.9-2.3,0-3.1c0.9-0.9,2.3-0.9,3.1,0c3.7,3.7,11.5,4.9,17,4.9s13.4-1.3,17.1-5c0.9-0.9,2.3-0.9,3.1,0
+        		C184.1,191.8,184.1,193.2,183.2,194z M181.7,180.1c-4.7,0-8.5-3.8-8.5-8.5c0-4.7,3.8-8.5,8.5-8.5s8.5,3.8,8.5,8.5
+        		C190.2,176.3,186.4,180.1,181.7,180.1z"/>
+        </svg>
+        <div>Reddit</div></a>
+      <a href='https://google.com'>
+        <svg class='link-logo' viewBox="-220 -220 938 962"><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg>
+        <div>Google</div></a>
+      <a href='minesweeper/index.html'>
+        <img src='minesweeper/mine.png' class='link-logo' style='image-rendering:pixelated;height:auto;transform:scale(.5,.5);top:-4vw'><div>Minesweeper</div></a>
+      <a href='cliques/index.html'>Soon<div>Cliques</div></a>
+      <a href='dino.html'>Soon<div>Dino game</div></a>
+      <a href='snek.html'>Soon<div>Snake</div></a>
+    </div>
+  </body>
+</html>
